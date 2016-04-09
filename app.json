@@ -1,0 +1,266 @@
+{
+    "id": "martens.yamaha",
+    "name": {
+        "en": "Yamaha receiver",
+        "nl": "Yamaha receiver"
+    },
+    "version": "0.0.1",
+    "compatibility": "0.x || 1.x",
+    "author": {
+        "name": "Koen Martens",
+        "email": "koen-martens@hotmail.com"
+    },
+    "images": {
+      "large": "./assets/images/large.jpg",
+      "small": "./assets/images/small.jpg"
+    },
+    "category": "appliances",
+    "description": {
+    	"en": "Yamaha receiver app for Homey",
+		"nl": "Yamaha receiver app voor Homey"
+    },
+    "dependencies": {
+    		"net": "*"
+    },
+    "drivers": [
+      {
+          "id": "receiver",
+          "name": {
+              "en": "Yamaha receiver",
+              "nl": "Yamaha receiver"
+          },
+          "images": {
+              "large": "drivers/receiver/assets/images/large.jpg",
+              "small": "drivers/receiver/assets/images/small.jpg"
+          },
+          "class": "other",
+          "capabilities": [ "" ],
+          "pair": [
+            {
+              "id": "start"
+            },
+            {
+              "id": "list_devices",
+              "template": "list_devices",
+              "navigation": {
+                  "next": "add_receiver"
+              }
+            },
+            {
+              "id": "add_receiver",
+              "template": "add_devices"
+            }
+          ]
+      }
+    ],
+    "flow": {
+	    "actions": [
+        {
+            "id": "powerOn",
+            "title": {
+                "en": "Turn power on",
+                "nl": "Aanzetten"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+	            "filter": "driver_id=receiver"
+              }
+            ]
+        },
+        {
+            "id": "powerOff",
+            "title": {
+                "en": "Power off/standby",
+                "nl": "Uitschakelen/standby"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+	            "filter": "driver_id=receiver"
+              }
+            ]
+        },{
+            "id": "mute",
+            "title": {
+                "en": "Mute",
+                "nl": "Mute"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+	            "filter": "driver_id=receiver"
+              }
+            ]
+        },{
+            "id": "unMute",
+            "title": {
+                "en": "Mute Off",
+                "nl": "Mute Uit"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+	            "filter": "driver_id=receiver"
+              }
+            ]
+        },
+        {
+            "id": "setVolume",
+            "title": {
+                "en": "Change volume",
+                "nl": "Verander volume"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+                "filter": "driver_id=receiver"
+              },
+              {
+                "name": "volume",
+                "type": "number",
+                "min": 0,
+                "max": 100,
+                "placeholder": {
+                   "en": "Target volume in %",
+                   "nl": "Gewenst volume in %"
+                }
+              }
+            ]
+        },
+        {
+            "id": "volumeUp",
+            "title": {
+                "en": "Raise volume",
+                "nl": "Zet geluid harder"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+                "filter": "driver_id=receiver"
+              },
+              {
+                "name": "volume",
+                "type": "number",
+                "min": 0,
+                "max": 100,
+                "placeholder": {
+                   "en": "Volume change in dB",
+                   "nl": "Volumeverandering in dB"
+                }
+              }
+            ]
+        },
+        {
+            "id": "volumeDown",
+            "title": {
+                "en": "Lower volume",
+                "nl": "Zet geluid zachter"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+                "filter": "driver_id=receiver"
+              },
+              {
+                "name": "volume",
+                "type": "number",
+                "min": 0,
+                "max": 100,
+                "placeholder": {
+                   "en": "Volume change in dB",
+                   "nl": "Volumeverandering in dB"
+                }
+              }
+            ]
+        },
+		{
+            "id": "changeSource",
+            "title": {
+                "en": "Change source",
+                "nl": "Bron selecteren"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+	            "filter": "driver_id=receiver"
+              },
+			  {
+				"name": "input",
+				"type": "autocomplete",
+				"placeholder": {
+				  "en": "input",
+				  "nl": "input"
+				}
+			  }
+            ]
+        },
+		{
+            "id": "changeSurround",
+            "title": {
+                "en": "Change surround options",
+                "nl": "Surround opties aanpassen"
+            },
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "placeholder": {
+                  "en": "Select receiver",
+                  "nl": "Selecteer receiver"
+                },
+	            "filter": "driver_id=receiver"
+              },
+			  {
+				"name": "input",
+				"type": "autocomplete",
+				"placeholder": {
+				  "en": "input",
+				  "nl": "input"
+				}
+			  }
+            ]
+        }
+      ]
+    }
+}
