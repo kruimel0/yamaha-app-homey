@@ -10,6 +10,10 @@ var dropmenu = 0;
 //var request = Promise.promisify(require("request"));
 //Promise.promisifyAll(request);
 var request = require('request');
+<<<<<<< HEAD
+var hostIP = Homey.manager('settings').get( 'hostIP' );
+=======
+>>>>>>> origin/master
 
 var allPossibleInputs = [
 		{	inputName: 'HDMI1',
@@ -155,7 +159,12 @@ module.exports.pair = function (socket) {
 
 		// Set passed pair settings in variables
 		tempIP = data.ipaddress;
+<<<<<<< HEAD
+		Homey.manager('settings').set( 'hostIP', data.ipaddress);
+		hostIP = tempIP;
+=======
 		hostIP=tempIP;
+>>>>>>> origin/master
 		Homey.log ( "Yamaha receiver app - got get_devices from front-end, tempIP =" + hostIP );
 
 		// assume IP is OK and continue
@@ -171,6 +180,25 @@ module.exports.pair = function (socket) {
 // flow action handlers
 Homey.manager('flow').on('action.powerOn', function (callback, args) {
     SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Power_Control><Power>On</Power></Power_Control></Main_Zone></YAMAHA_AV>');
+<<<<<<< HEAD
+	callback(null, true);
+});
+Homey.manager('flow').on('action.powerOff', function (callback, args) {
+    SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Power_Control><Power>Standby</Power></Power_Control></Main_Zone></YAMAHA_AV>');
+	callback(null, true);
+});
+Homey.manager('flow').on('action.changeSource', function (callback, args) {
+	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Input><Input_Sel>'+args.input.inputName+'</Input_Sel></Input></Main_Zone></YAMAHA_AV>');
+	callback(null, true);
+});
+Homey.manager('flow').on('action.changeSurround', function (callback, args) {
+	if (args.input.inputName == 'Straight'){
+		SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Surround><Program_Sel><Current><Straight>On</Straight></Current></Program_Sel></Surround></Main_Zone></YAMAHA_AV>');
+		callback(null, true);
+	} else{
+		SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Surround><Program_Sel><Current><Straight>Off</Straight><Sound_Program>'+args.input.inputName+'</Sound_Program></Current></Program_Sel></Surround></Main_Zone></YAMAHA_AV>');
+		callback(null, true);
+=======
 });
 Homey.manager('flow').on('action.powerOff', function (callback, args) {
     SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Power_Control><Power>Standby</Power></Power_Control></Main_Zone></YAMAHA_AV>');
@@ -183,13 +211,22 @@ Homey.manager('flow').on('action.changeSurround', function (callback, args) {
 		SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Surround><Program_Sel><Current><Straight>On</Straight></Current></Program_Sel></Surround></Main_Zone></YAMAHA_AV>')
 	} else{
 		SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Surround><Program_Sel><Current><Straight>Off</Straight><Sound_Program>'+args.input.inputName+'</Sound_Program></Current></Program_Sel></Surround></Main_Zone></YAMAHA_AV>');
+>>>>>>> origin/master
 	}
 });
 Homey.manager('flow').on('action.mute', function (callback, args){
 	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Volume><Mute>On</Mute></Volume></Main_Zone></YAMAHA_AV>');
+<<<<<<< HEAD
+	callback(null, true);
 });
 Homey.manager('flow').on('action.unMute', function (callback, args){
 	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Volume><Mute>Off</Mute></Volume></Main_Zone></YAMAHA_AV>');
+	callback(null, true);
+=======
+});
+Homey.manager('flow').on('action.unMute', function (callback, args){
+	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Volume><Mute>Off</Mute></Volume></Main_Zone></YAMAHA_AV>');
+>>>>>>> origin/master
 });
 Homey.manager('flow').on('action.setVolume', function (callback, args){
 	var targetVolume = args.volume;
@@ -200,17 +237,29 @@ Homey.manager('flow').on('action.setVolume', function (callback, args){
 	//}
 	//setTimeout(function() {Homey.log('Waiting 3s');}, 5000);
 	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Volume><Lvl><Val>'+targetVolumedB+'</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>');
+<<<<<<< HEAD
+	callback(null, true);
+=======
+>>>>>>> origin/master
 });
 
 Homey.manager('flow').on('action.volumeUp', function (callback, args){
 	var targetVolume = args.volume;
 	Homey.log ('target volume=' + targetVolume);
 	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Volume><Lvl><Val>Up '+targetVolume+' dB</Val><Exp></Exp><Unit></Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>');	
+<<<<<<< HEAD
+	callback(null, true);
+=======
+>>>>>>> origin/master
 });
 
 Homey.manager('flow').on('action.volumeDown', function (callback, args){
 	var targetVolume = args.volume;
 	SendXMLToReceiver('<YAMAHA_AV cmd="PUT"><Main_Zone><Volume><Lvl><Val>Down '+targetVolume+' dB</Val><Exp></Exp><Unit></Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>');	
+<<<<<<< HEAD
+	callback(null, true);
+=======
+>>>>>>> origin/master
 });
 
 function SendXMLToReceiver (xml){
@@ -233,6 +282,10 @@ function GetXMLFromReceiver (xml){
         body:xml
     })
 	Homey.log ("Lastest HTTP_GET:"+latestGetHTTP)
+<<<<<<< HEAD
+	callback(null, false);
+=======
+>>>>>>> origin/master
 	
 };
 Homey.manager('flow').on('action.changeSource.input.autocomplete', function (callback, value) {
