@@ -1,5 +1,9 @@
 # Yamaha receiver app for Athom Homey
 
+Version 0.1.1
+
+Update capabilities crash v0.9.x
+
 Version 0.1.0
 
 Control your Yamaha network-enabled receiver using the Homey by Athom B.V.
