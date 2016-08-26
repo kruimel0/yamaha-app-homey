@@ -34,7 +34,7 @@
               "small": "drivers/receiver/assets/images/small.jpg"
           },
           "class": "other",
-          "capabilities": [ "" ],
+          "capabilities": [ "onoff" ],
           "pair": [
             {
               "id": "start"
