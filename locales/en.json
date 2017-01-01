@@ -1,11 +1,12 @@
 {
 	"pair": {
 		"start": {
-			"intro": "Enter the IP address of your Yamaha receiver.",
+			"intro": "Enter the IP address and zone of your Yamaha receiver. Zones can be Main_Zone, Zone_2, Zone_3, etc. Leave on Main_Zone if you are unsure.",
 			"title": "Finding device...",
 			"error": "An error has occurred.",
 			"required": "IP address is a required value.",
 			"ipAddress": "IP address",
+			"zone": "Zone",
 			"saveSettings": "Save settings"
 		}
   	}

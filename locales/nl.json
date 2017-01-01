@@ -1,11 +1,12 @@
 {
 	"pair": {
 		"start": {
-			"intro": "Vul het IP-adres van uw Yamaha receiver in.",
+			"intro": "Vul het IP-adres en de Zone van uw Yamaha receiver in. Zones kunnen Main_Zone, Zone_2, Zone_3, etc zijn. Als u twijfelt, vul dan Main_Zone in.",
 			"title": "Apparaat zoeken...",
 			"error": "Er is een fout opgetreden.",
 			"required": "IP adres is verplicht.",
 			"ipAddress": "IP adres",
+			"zone": "Zone",
 			"saveSettings": "Gegevens opslaan"
 		}
 	}	
