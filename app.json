@@ -4,7 +4,7 @@
         "en": "Yamaha receiver",
         "nl": "Yamaha receiver"
     },
-    "version": "0.1.1",
+    "version": "0.2.0",
     "compatibility": "0.x || 1.x",
     "author": {
         "name": "Koen Martens",
@@ -22,6 +22,186 @@
     "dependencies": {
     		"net": "*"
     },
+	"capabilities": {
+        "source_selected": {
+            "type": "enum",
+            "title": {
+                "en": "Selected source",
+				"nl": "Geselecteerde bron"
+            },
+            "getable": true,
+            "setable": true,
+			"values": [
+			{	"id": "HDMI1",
+				"title": { "en": "HDMI1"
+			}
+			},
+			{	"id": "HDMI2",
+				"title": { "en": "HDMI2"
+			}
+			},
+			{	"id": "HDMI3",
+				"title": { "en": "HDMI3"
+			}
+			},
+			{	"id": "HDMI4",
+				"title": { "en": "HDMI4"
+			}
+			},
+			{	"id": "HDMI5",
+				"title": { "en": "HDMI5"
+			}
+			},
+			{	"id": "HDMI6",
+				"title": { "en": "HDMI6"
+			}
+			},
+			{	"id": "HDMI7",
+				"title": { "en": "HDMI7"
+			}
+			},
+			{	"id": "HDMI8",
+				"title": { "en": "HDMI8"
+			}
+			},
+			{	"id": "AV1",
+				"title": { "en": "AV1"
+			}
+			},
+			{	"id": "AV2",
+				"title": { "en": "AV2"
+			}
+			},
+			{	"id": "AV3",
+				"title": { "en": "AV3"
+			}
+			},
+			{	"id": "AV4",
+				"title": { "en": "AV4"
+			}
+			},
+			{	"id": "AV5",
+				"title": { "en": "AV5"
+			}
+			},
+			{	"id": "AV6",
+				"title": { "en": "AV6"
+			}
+			},
+			{	"id": "AUDIO1",
+				"title": { "en": "AUDIO1"
+			}
+			},
+			{	"id": "AUDIO2",
+				"title": { "en": "AUDIO2"
+			}
+			},
+			{	"id": "AUDIO3",
+				"title": { "en": "AUDIO3"
+			}
+			},
+			{	"id": "TUNER",
+				"title": { "en": "TUNER"
+			}
+			},
+			{	"id": "V-AUX",
+				"title": { "en": "V-AUX"
+			}
+			},
+			{	"id": "SERVER",
+				"title": { "en": "SERVER"
+			}
+			},
+			{	"id": "NET RADIO",
+				"title": { "en": "NET RADIO"
+			}
+			},
+			{	"id": "USB",
+				"title": { "en": "USB"
+			}
+			},
+			{	"id": "Spotify",
+				"title": { "en": "Spotify"
+			}
+			},
+			{	"id": "AirPlay",
+				"title": { "en": "AirPlay"
+			}
+			}
+			]
+        },
+        "soundprogram_selected": {
+            "type": "enum",
+            "title": {
+                "en": "Selected sound program",
+				"nl": "Geselecteerde geluidsprogramma"
+            },
+            "getable": true,
+            "setable": true,
+			"values": [
+				{	"id": "Straight",
+					"title": { "en": "Straight"
+				}},
+				{	"id": "7ch Stereo",
+					"title": { "en": "7ch Stereo"
+				}},
+				{	"id": "Action Game",
+					"title": { "en": "Action Game"
+				}},
+				{	"id": "Roleplaying Game",
+					"title": { "en": "Roleplaying Game"
+				}},
+				{	"id": "Music Video",
+					"title": { "en": "Music Video"
+				}},
+				{	"id": "Standard",
+					"title": { "en": "Standard"
+				}},
+				{	"id": "Spectacle",
+					"title": { "en": "Spectacle"
+				}},
+				{	"id": "Sci-Fi",
+					"title": { "en": "Sci-Fi"
+				}},
+				{	"id": "Adventure",
+					"title": { "en": "Adventure"
+				}},
+				{	"id": "Drama",
+					"title": { "en": "Drama"
+				}},
+				{	"id": "Hall in Munich",
+					"title": { "en": "Hall in Munich"
+				}},
+				{	"id": "Hall in Vienna",
+					"title": { "en": "Hall in Vienna"
+				}},
+				{	"id": "Chamber",
+					"title": { "en": "Chamber"
+				}},
+				{	"id": "Cellar Club",
+					"title": { "en": "Cellar Club"
+				}},
+				{	"id": "The Roxy Theatre",
+					"title": { "en": "The Roxy Theatre"
+				}},
+				{	"id": "The Bottom Line",
+					"title": { "en": "The Bottom Line"
+				}},
+				{	"id": "Sports",
+					"title": { "en": "Sports"
+				}},
+				{	"id": "Mono Movie",
+					"title": { "en": "Mono Movie"
+				}},
+				{	"id": "2ch Stereo",
+					"title": { "en": "2ch Stereo"
+				}},
+				{	"id": "Surround Decoder",
+					"title": { "en": "Surround Decoder"
+				}}
+			]
+        }
+    },
     "drivers": [
       {
           "id": "receiver",
@@ -34,7 +214,31 @@
               "small": "drivers/receiver/assets/images/small.jpg"
           },
           "class": "other",
-          "capabilities": [ "onoff" ],
+          "capabilities": [ "onoff", "volume_mute", "source_selected", "volume_set", "soundprogram_selected"],
+		  "mobile": {
+				"components": [
+					{
+						"id": "icon",
+						"capabilities": [ "onoff" ],
+						"options": {
+							"icons": {
+								"onoff": "./assets/icon.svg"
+							}
+						}
+					},
+					{
+						"id": "slider",
+						"capabilities": [ "volume_set" ],
+						"options": {
+							"showTitle": true
+						}
+					},
+					{
+						"id": "picker",
+						"capabilities": [ "source_selected" ]
+					}
+				]
+			},
           "pair": [
             {
               "id": "start"
@@ -50,7 +254,41 @@
               "id": "add_receiver",
               "template": "add_devices"
             }
-          ]
+          ],
+		  "settings":[
+			{
+				"type": "group",
+                    "label": {
+                        "en": "General settings"
+                    },
+					"children":[
+						{
+                            "id": "ipaddress",
+                            "type": "text",
+                            "label": {
+                                "en": "IP address"
+                            },
+                            "value": "0.0.0.0",
+                            "hint": {
+                                "en": "Enter the IP address of your Yamaha receiver here.",
+                                "nl": "Vul het IP adres van uw Yamaha receiver hier in."
+                            }
+                        },
+						{
+                            "id": "zone",
+                            "type": "text",
+                            "label": {
+                                "en": "Zone"
+                            },
+                            "value": "Main_Zone",
+                            "hint": {
+                                "en": "Enter the Zone of your Yamaha receiver here. If you are unsure what to enter, fill in 'Main_Zone'.",
+                                "nl": "Vul de Zone van uw Yamaha receiver hier in. Als je niet zeker weet wat u in moet voeren, vul dan 'Main_Zone' in."
+                            }
+                        }
+					]
+			}
+		  ]
       }
     ],
     "flow": {
