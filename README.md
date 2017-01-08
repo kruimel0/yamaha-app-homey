@@ -14,7 +14,7 @@ Are always appreciated :)
 [![](https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CWQL5MRKGHH5U)
 
 #Changelog
-Version 0.2.1 - Version 0.2.2
+Version 0.2.1 - Version 0.2.3
 
 Bugfixes
 

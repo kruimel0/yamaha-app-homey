@@ -392,7 +392,7 @@ function GetStatus (cap){
 		var regexp = /Lvl><Mute>((On|Off))<\/Mute/i;
 		var matches_array = str.match(regexp);
 		//Make muteStatus binary: 1 is on, 0 is off.
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var muteStatus = matches_array[1].replace('On',1);
 			muteStatus = muteStatus.replace('Off',0);
 		}
@@ -400,7 +400,7 @@ function GetStatus (cap){
 		//Regexp the result - Volume value
 		var regexp = /<Volume><Lvl><Val>(.?([0-9])*)<\/Val/i;
 		var matches_array = str.match(regexp);
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var volumeStatus = matches_array[1];
 			//Set volumeStatus to 0-1 float value
 			volumeStatus=((volumeStatus/5)+160)/192;
@@ -409,14 +409,14 @@ function GetStatus (cap){
 		//Regexp the result - current input
 		var regexp = /<Input><Input_Sel>(.*?)<\/Input_Sel>/i;
 		var matches_array = str.match(regexp);
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var inputStatus = matches_array[1];
 		}
 		
 		//Regexp the result - sourceName
 		var regexp = /<Src_Name>(.*?)<\/Src_Name>/i;
 		var matches_array = str.match(regexp);
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var sourceNameStatus = matches_array[1];
 		}
 		
@@ -424,7 +424,7 @@ function GetStatus (cap){
 		var regexp = /Power_Control><Power>(.*?)<\/Power>/i;
 		var matches_array = str.match(regexp);
 		//Make onoffStatus binary: 1 is on, 0 is off.
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var onoffStatus = matches_array[1].replace('On',1);
 			onoffStatus = onoffStatus.replace('Off',0);
 		}
@@ -433,7 +433,7 @@ function GetStatus (cap){
 		var regexp = /Power><Sleep>(.*?)<\/Sleep>/i;
 		var matches_array = str.match(regexp);
 		//Make sleepStatus binary: 1 is on, 0 is off.
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var sleepStatus = matches_array[1].replace('On',1);
 			sleepStatus = sleepStatus.replace('Off',0);
 		}
@@ -442,7 +442,7 @@ function GetStatus (cap){
 		var regexp = /<Straight>(.*?)<\/Straight>/i;
 		var matches_array = str.match(regexp);
 		//Make straightStatus binary: 1 is on, 0 is off.
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var straightStatus = matches_array[1].replace('On',1);
 			straightStatus = straightStatus.replace('Off',0);
 		}
@@ -451,7 +451,7 @@ function GetStatus (cap){
 		var regexp = /<Enhancer>(.*?)<\/Enhancer>/i;
 		var matches_array = str.match(regexp);
 		//Make straightStatus binary: 1 is on, 0 is off.
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var enhancerStatus = matches_array[1].replace('On',1);
 			enhancerStatus = enhancerStatus.replace('Off',0);
 		}
@@ -459,23 +459,31 @@ function GetStatus (cap){
 		//Regexp the result - soundProgram
 		var regexp = /<Sound_Program>(.*?)<\/Sound_Program>/i;
 		var matches_array = str.match(regexp);
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var soundProgramStatus = matches_array[1];
 		}
 		
 		//Regexp the result - bassValue
 		var regexp = /<Bass><Val>(.*?)<\/Val>/i;
 		var matches_array = str.match(regexp);
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var bassValueStatus = matches_array[1];
 		}
 		
 		//Regexp the result - trebleValue
 		var regexp = /<Treble><Val>(.*?)<\/Val>/i;
 		var matches_array = str.match(regexp);
-		if (typeof matches_array[1] !== undefined ){
+		if (matches_array !== null ){
 			var trebleValueStatus = matches_array[1];
 		}
+		
+		//Test regexp which is wrong forsure
+		var regexp = /<Trebless><Val>(.*?)<\/Val>/i;
+		var matches_array = str.match(regexp);
+		if (matches_array !== null ){
+			var trebleValueStatus2 = matches_array[1];
+		}
+		Homey.log("--------------------------------- Error avoided!")
 		
 		//Give a log of the results
 		Homey.log('---------------------------------------------')
@@ -490,6 +498,7 @@ function GetStatus (cap){
 		Homey.log('Sound Program Status: '+soundProgramStatus);
 		Homey.log('Bass value Status: '+bassValueStatus);
 		Homey.log('Treble value Status: '+trebleValueStatus);
+		Homey.log('Wrong value test: '+trebleValueStatus2);
 		
 		//Capabilities part
 		//Changing all capabilities - too much, but no workaround at the moment
