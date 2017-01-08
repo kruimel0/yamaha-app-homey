@@ -371,6 +371,7 @@ function GetXMLFromReceiver (xml){
 };
 //Get status and parse it --> this is the XML part.
 function GetStatus (cap){
+	if (typeof cap !== undefined){
 	xml = '<YAMAHA_AV cmd="GET"><Main_Zone><Basic_Status>GetParam</Basic_Status></Main_Zone></YAMAHA_AV>';
 	Homey.log ("Yamaha receiver app - status request " + xml + " from " + hostIP + 'with cap = ' +cap);
     var latestGetHTTP = request
@@ -485,6 +486,7 @@ function GetStatus (cap){
 			module.exports.realtime( cap, 'volume_set', volumeStatus)
 		};
   });
+}
 };
 //Autocomplete part
 var allPossibleInputs = [
