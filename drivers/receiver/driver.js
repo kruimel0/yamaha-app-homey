@@ -392,68 +392,90 @@ function GetStatus (cap){
 		var regexp = /Lvl><Mute>((On|Off))<\/Mute/i;
 		var matches_array = str.match(regexp);
 		//Make muteStatus binary: 1 is on, 0 is off.
-		var muteStatus = matches_array[1].replace('On',1);
-		muteStatus = muteStatus.replace('Off',0);
+		if (typeof matches_array[1] !== undefined ){
+			var muteStatus = matches_array[1].replace('On',1);
+			muteStatus = muteStatus.replace('Off',0);
+		}
 		
 		//Regexp the result - Volume value
 		var regexp = /<Volume><Lvl><Val>(.?([0-9])*)<\/Val/i;
 		var matches_array = str.match(regexp);
-		var volumeStatus = matches_array[1];
-		//Set volumeStatus to 0-1 float value
-		volumeStatus=((volumeStatus/5)+160)/192;
+		if (typeof matches_array[1] !== undefined ){
+			var volumeStatus = matches_array[1];
+			//Set volumeStatus to 0-1 float value
+			volumeStatus=((volumeStatus/5)+160)/192;
+		}
 				
 		//Regexp the result - current input
 		var regexp = /<Input><Input_Sel>(.*?)<\/Input_Sel>/i;
 		var matches_array = str.match(regexp);
-		var inputStatus = matches_array[1];
+		if (typeof matches_array[1] !== undefined ){
+			var inputStatus = matches_array[1];
+		}
 		
 		//Regexp the result - sourceName
 		var regexp = /<Src_Name>(.*?)<\/Src_Name>/i;
 		var matches_array = str.match(regexp);
-		var sourceNameStatus = matches_array[1];
+		if (typeof matches_array[1] !== undefined ){
+			var sourceNameStatus = matches_array[1];
+		}
 		
 		//Regexp the result - onoff state
 		var regexp = /Power_Control><Power>(.*?)<\/Power>/i;
 		var matches_array = str.match(regexp);
 		//Make onoffStatus binary: 1 is on, 0 is off.
-		var onoffStatus = matches_array[1].replace('On',1);
-		onoffStatus = onoffStatus.replace('Off',0);
+		if (typeof matches_array[1] !== undefined ){
+			var onoffStatus = matches_array[1].replace('On',1);
+			onoffStatus = onoffStatus.replace('Off',0);
+		}
 		
 		//Regexp the result - sleep state
 		var regexp = /Power><Sleep>(.*?)<\/Sleep>/i;
 		var matches_array = str.match(regexp);
 		//Make sleepStatus binary: 1 is on, 0 is off.
-		var sleepStatus = matches_array[1].replace('On',1);
-		sleepStatus = sleepStatus.replace('Off',0);
+		if (typeof matches_array[1] !== undefined ){
+			var sleepStatus = matches_array[1].replace('On',1);
+			sleepStatus = sleepStatus.replace('Off',0);
+		}
 		
 		//Regexp the result - straight option
 		var regexp = /<Straight>(.*?)<\/Straight>/i;
 		var matches_array = str.match(regexp);
 		//Make straightStatus binary: 1 is on, 0 is off.
-		var straightStatus = matches_array[1].replace('On',1);
-		straightStatus = straightStatus.replace('Off',0);
+		if (typeof matches_array[1] !== undefined ){
+			var straightStatus = matches_array[1].replace('On',1);
+			straightStatus = straightStatus.replace('Off',0);
+		}
 		
 		//Regexp the result - enhancer option
 		var regexp = /<Enhancer>(.*?)<\/Enhancer>/i;
 		var matches_array = str.match(regexp);
 		//Make straightStatus binary: 1 is on, 0 is off.
-		var enhancerStatus = matches_array[1].replace('On',1);
-		enhancerStatus = enhancerStatus.replace('Off',0);
+		if (typeof matches_array[1] !== undefined ){
+			var enhancerStatus = matches_array[1].replace('On',1);
+			enhancerStatus = enhancerStatus.replace('Off',0);
+		}
 		
 		//Regexp the result - soundProgram
 		var regexp = /<Sound_Program>(.*?)<\/Sound_Program>/i;
 		var matches_array = str.match(regexp);
-		var soundProgramStatus = matches_array[1];
+		if (typeof matches_array[1] !== undefined ){
+			var soundProgramStatus = matches_array[1];
+		}
 		
 		//Regexp the result - bassValue
 		var regexp = /<Bass><Val>(.*?)<\/Val>/i;
 		var matches_array = str.match(regexp);
-		var bassValueStatus = matches_array[1];
+		if (typeof matches_array[1] !== undefined ){
+			var bassValueStatus = matches_array[1];
+		}
 		
 		//Regexp the result - trebleValue
 		var regexp = /<Treble><Val>(.*?)<\/Val>/i;
 		var matches_array = str.match(regexp);
-		var trebleValueStatus = matches_array[1];
+		if (typeof matches_array[1] !== undefined ){
+			var trebleValueStatus = matches_array[1];
+		}
 		
 		//Give a log of the results
 		Homey.log('---------------------------------------------')
@@ -481,9 +503,15 @@ function GetStatus (cap){
 			if (onoffStatus == 0){module.exports.realtime( cap, 'onoff', false)}
 			else{module.exports.realtime( cap, 'onoff', true)}
 			
-			module.exports.realtime( cap, 'source_selected', String(inputStatus))
-			module.exports.realtime( cap, 'soundprogram_selected', String(soundProgramStatus))
-			module.exports.realtime( cap, 'volume_set', volumeStatus)
+			if (typeof inputStatus !== undefined){
+				module.exports.realtime( cap, 'source_selected', String(inputStatus))
+			} else {module.exports.realtime( cap, 'source_selected', "Nothing found")}
+			if (typeof soundProgramStatus !== undefined){
+				module.exports.realtime( cap, 'soundprogram_selected', String(soundProgramStatus))
+			} else {module.exports.realtime( cap, 'soundprogram_selected', "Nothing found")}
+			if (typeof volumeStatus !== undefined){
+				module.exports.realtime( cap, 'volume_set', volumeStatus)
+			} else {module.exports.realtime( cap, 'volume_set', 0)}
 		};
   });
 }
