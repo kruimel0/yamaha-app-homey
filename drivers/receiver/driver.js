@@ -366,8 +366,8 @@ function GetXMLFromReceiver (xml){
 	})
 	.on('data', function (chunk) {
     Homey.log('BODY: ' + chunk);
-  });
-	Homey.log ("Lastest HTTP_GET: %j",latestGetHTTP)	
+	});
+	Homey.log ("Lastest HTTP_GET: %j",latestGetHTTP)
 };
 //Get status and parse it --> this is the XML part.
 function GetStatus (cap){
@@ -522,8 +522,8 @@ function GetStatus (cap){
 				module.exports.realtime( cap, 'volume_set', volumeStatus)
 			} else {module.exports.realtime( cap, 'volume_set', 0)}
 		};
-  });
-}
+	});
+  }
 };
 //Autocomplete part
 var allPossibleInputs = [
@@ -568,6 +568,15 @@ var allPossibleInputs = [
 		},
 		{	inputName: 'AV6',
 	 		friendlyName: "AV6"
+		},
+		{	inputName: 'AUDIO1',
+	 		friendlyName: "AUDIO1"
+		},
+		{	inputName: 'AUDIO2',
+	 		friendlyName: "AUDIO2"
+		},
+		{	inputName: 'AUDIO3',
+	 		friendlyName: "AUDIO3"
 		},
 		{	inputName: 'TUNER',
 	 		friendlyName: "TUNER"
