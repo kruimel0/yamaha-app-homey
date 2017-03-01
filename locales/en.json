@@ -2,6 +2,7 @@
 	"pair": {
 		"start": {
 			"intro": "Enter the IP address and zone of your Yamaha receiver. Zones can be Main_Zone, Zone_2, Zone_3, etc. Leave on Main_Zone if you are unsure.",
+			"intro_musiccast": "Enter the IP address and zone of your Yamaha MusicCast device.",
 			"title": "Finding device...",
 			"error": "An error has occurred.",
 			"required": "IP address is a required value.",

@@ -49,6 +49,7 @@ module.exports.pair = function (socket) {
             name: "New Device",
             data: {
                 id: tempIP+hostZone,
+				driver: "receiver",
 				ipaddress: tempIP,
 				zone: hostZone
             },
@@ -291,31 +292,31 @@ function initDevice( device_data ) {
 //});
 
 
-Homey.manager('flow').on('action.powerOn', function (callback, args) {
+module.exports.powerOn = function (callback, args) {
 	module.exports.realtime( args.device, 'onoff', true)
     SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Power_Control><Power>On</Power></Power_Control></'+args.device.zone+'></YAMAHA_AV>');
 	callback(null, true);
-});
-Homey.manager('flow').on('action.powerOff', function (callback, args) {
+};
+module.exports.powerOff = function (callback, args) {
 	module.exports.realtime( args.device, 'onoff', false)
     SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Power_Control><Power>Standby</Power></Power_Control></'+args.device.zone+'></YAMAHA_AV>');
 	callback(null, true);
-});
-Homey.manager('flow').on('action.changeSource', function (callback, args) {
-	module.exports.realtime( args.device, 'source_selected', args.input.inputName)
-	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Input><Input_Sel>'+args.input.inputName+'</Input_Sel></Input></'+args.device.zone+'></YAMAHA_AV>');
+};
+module.exports.changeSource = function (callback, args) {
+	module.exports.realtime( args.device, 'source_selected', args.input.name)
+	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Input><Input_Sel>'+args.input.name+'</Input_Sel></Input></'+args.device.zone+'></YAMAHA_AV>');
 	callback(null, true);
-});
-Homey.manager('flow').on('action.changeSurround', function (callback, args) {
-	if (args.input.inputName == 'Straight'){
+};
+module.exports.changeSurround = function (callback, args) {
+	if (args.input.key == 'straight'){
 		SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Surround><Program_Sel><Current><Straight>On</Straight></Current></Program_Sel></Surround></'+args.device.zone+'></YAMAHA_AV>');
 		callback(null, true);
 	} else{
-		SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Surround><Program_Sel><Current><Straight>Off</Straight><Sound_Program>'+args.input.inputName+'</Sound_Program></Current></Program_Sel></Surround></'+args.device.zone+'></YAMAHA_AV>');
+		SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Surround><Program_Sel><Current><Straight>Off</Straight><Sound_Program>'+args.input.name+'</Sound_Program></Current></Program_Sel></Surround></'+args.device.zone+'></YAMAHA_AV>');
 		callback(null, true);
 	}
-});
-Homey.manager('flow').on('action.mute', function (callback, args){
+};
+module.exports.mute = function (callback, args){
 	Homey.log('Mute flow: %j',args.device)
 	//devices[ args.device.id ].volume_mute.set = true;
 	
@@ -324,33 +325,33 @@ Homey.manager('flow').on('action.mute', function (callback, args){
 	//devices[ args.device.id ].state = { volume_mute: true }
 	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Volume><Mute>On</Mute></Volume></'+args.device.zone+'></YAMAHA_AV>');
 	callback(null, true);
-});
-Homey.manager('flow').on('action.unMute', function (callback, args){
+};
+module.exports.unMute = function (callback, args){
 	//devices[ args.device.id ].state.set = { volume_mute: false };
 	module.exports.realtime( args.device, 'volume_mute', false)
 	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Volume><Mute>Off</Mute></Volume></'+args.device.zone+'></YAMAHA_AV>');
 	//GetStatus(args.device)
 	callback(null, true);
-});
-Homey.manager('flow').on('action.setVolume', function (callback, args){
+};
+module.exports.setVolume = function (callback, args){
 	var targetVolume = args.volume;
 	Homey.log ('target volume=' + targetVolume);
 	var targetVolumedB = Math.round((targetVolume/100)*192-160)*5
 	module.exports.realtime( args.device, 'volume_set', args.volume)
 	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Volume><Lvl><Val>'+targetVolumedB+'</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></'+args.device.zone+'></YAMAHA_AV>');
 	callback(null, true);
-});
-Homey.manager('flow').on('action.volumeUp', function (callback, args){
+};
+module.exports.volumeUp = function (callback, args){
 	var targetVolume = args.volume;
 	Homey.log ('target volume=' + targetVolume);
 	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Volume><Lvl><Val>Up '+targetVolume+' dB</Val><Exp></Exp><Unit></Unit></Lvl></Volume></'+args.device.zone+'></YAMAHA_AV>');	
 	callback(null, true);
-});
-Homey.manager('flow').on('action.volumeDown', function (callback, args){
+};
+module.exports.volumeDown = function (callback, args){
 	var targetVolume = args.volume;
 	SendXMLToReceiver(args.device.ipaddress,'<YAMAHA_AV cmd="PUT"><'+args.device.zone+'><Volume><Lvl><Val>Down '+targetVolume+' dB</Val><Exp></Exp><Unit></Unit></Lvl></Volume></'+args.device.zone+'></YAMAHA_AV>');	
 	callback(null, true);
-});
+};
 
 //Set and get XML information
 function SendXMLToReceiver (ipaddress,xml){
@@ -559,184 +560,4 @@ function GetStatus (cap){
 	catch (e){
 		//Nothing here, just catching errors
 	}
-};
-//Autocomplete part
-var allPossibleInputs = [
-		{	inputName: 'HDMI1',
-	 		friendlyName: "HDMI1"
-		},
-		{	inputName: 'HDMI2',
-	 		friendlyName: "HDMI2"
-		},
-		{	inputName: 'HDMI3',
-	 		friendlyName: "HDMI3"
-		},
-		{	inputName: 'HDMI4',
-	 		friendlyName: "HDMI4"
-		},
-		{	inputName: 'HDMI5',
-	 		friendlyName: "HDMI5"
-		},
-		{	inputName: 'HDMI6',
-	 		friendlyName: "HDMI6"
-		},
-		{	inputName: 'HDMI7',
-	 		friendlyName: "HDMI7"
-		},
-		{	inputName: 'HDMI8',
-	 		friendlyName: "HDMI8"
-		},
-		{	inputName: 'AV1',
-	 		friendlyName: "AV1"
-		},
-		{	inputName: 'AV2',
-	 		friendlyName: "AV2"
-		},
-		{	inputName: 'AV3',
-	 		friendlyName: "AV3"
-		},
-		{	inputName: 'AV4',
-	 		friendlyName: "AV4"
-		},
-		{	inputName: 'AV5',
-	 		friendlyName: "AV5"
-		},
-		{	inputName: 'AV6',
-	 		friendlyName: "AV6"
-		},
-		{	inputName: 'AUDIO1',
-	 		friendlyName: "AUDIO1"
-		},
-		{	inputName: 'AUDIO2',
-	 		friendlyName: "AUDIO2"
-		},
-		{	inputName: 'AUDIO3',
-	 		friendlyName: "AUDIO3"
-		},
-		{	inputName: 'TUNER',
-	 		friendlyName: "TUNER"
-		},
-		{	inputName: 'V-AUX',
-	 		friendlyName: "V-AUX"
-		},
-		{	inputName: 'SERVER',
-	 		friendlyName: "SERVER"
-		},
-		{	inputName: 'NET RADIO',
-	 		friendlyName: "NET RADIO"
-		},
-		{	inputName: 'USB',
-	 		friendlyName: "USB"
-		},
-		{	inputName: 'Spotify',
-	 		friendlyName: "Spotify"
-		},
-		{	inputName: 'AirPlay',
-	 		friendlyName: "AirPlay"
-		}
-];
-var allPossibleInputsSurround = [
-		{	inputName: 'Straight',
-	 		friendlyName: "Straight"
-		},
-		{	inputName: '7ch Stereo',
-	 		friendlyName: "7ch Stereo"
-		},
-		{	inputName: 'Action Game',
-	 		friendlyName: "Action Game"
-		},
-		{	inputName: 'Roleplaying Game',
-	 		friendlyName: "Roleplaying Game"
-		},
-		{	inputName: 'Music Video',
-	 		friendlyName: "Music Video"
-		},
-		{	inputName: 'Standard',
-	 		friendlyName: "Standard"
-		},
-		{	inputName: 'Spectacle',
-	 		friendlyName: "Spectacle"
-		},
-		{	inputName: 'Sci-Fi',
-	 		friendlyName: "Sci-Fi"
-		},
-		{	inputName: 'Adventure',
-	 		friendlyName: "Adventure"
-		},
-		{	inputName: 'Drama',
-	 		friendlyName: "Drama"
-		},
-		{	inputName: 'Hall in Munich',
-	 		friendlyName: "Hall in Munich"
-		},
-		{	inputName: 'Hall in Vienna',
-	 		friendlyName: "Hall in Vienna"
-		},
-		{	inputName: 'Chamber',
-	 		friendlyName: "Chamber"
-		},
-		{	inputName: 'Cellar Club',
-	 		friendlyName: "Cellar Club"
-		},
-		{	inputName: 'The Roxy Theatre',
-	 		friendlyName: "The Roxy Theatre"
-		},
-		{	inputName: 'The Bottom Line',
-	 		friendlyName: "The Bottom Line"
-		},
-		{	inputName: 'Sports',
-	 		friendlyName: "Sports"
-		},
-		{	inputName: 'Mono Movie',
-	 		friendlyName: "Mono Movie"
-		},
-		{	inputName: '2ch Stereo',
-	 		friendlyName: "2ch Stereo"
-		},
-		{	inputName: 'Surround Decoder',
-	 		friendlyName: "Surround Decoder"
-		}
-];
-
-Homey.manager('flow').on('action.changeSource.input.autocomplete', function (callback, value) {
-	var inputSearchString = value.query;
-	var items = searchForInputsByValueSource( inputSearchString );
-	callback(null, items);
-});
-Homey.manager('flow').on('condition.inputselected.input.autocomplete', function (callback, value) {
-	var inputSearchString = value.query;
-	var items = searchForInputsByValueSource( inputSearchString );
-	callback(null, items);
-});
-Homey.manager('flow').on('action.changeSurround.input.autocomplete', function (callback, value) {
-	var inputSearchString = value.query;
-	var items = searchForInputsByValueSurround( inputSearchString );
-	callback(null, items);
-});
-Homey.manager('flow').on('condition.inputselected.input.autocomplete', function (callback, value) {
-	var inputSearchString = value.query;
-	var items = searchForInputsByValueSurround( inputSearchString );
-	callback(null, items);
-});
-function searchForInputsByValueSource ( value ) {
-	var possibleInputs = allPossibleInputs;
-	var tempItems = [];
-	for (var i = 0; i < possibleInputs.length; i++) {
-		var tempInput = possibleInputs[i];
-		if ( tempInput.friendlyName.indexOf(value) >= 0 ) {
-			tempItems.push({ icon: "", name: tempInput.friendlyName, inputName: tempInput.inputName });
-		}
-	}
-	return tempItems;
-};
-function searchForInputsByValueSurround ( value ) {
-	var possibleInputs = allPossibleInputsSurround;
-	var tempItems = [];
-	for (var i = 0; i < possibleInputs.length; i++) {
-		var tempInput = possibleInputs[i];
-		if ( tempInput.friendlyName.indexOf(value) >= 0 ) {
-			tempItems.push({ icon: "", name: tempInput.friendlyName, inputName: tempInput.inputName });
-		}
-	}
-	return tempItems;
 };

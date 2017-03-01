@@ -204,91 +204,166 @@
     },
     "drivers": [
       {
-          "id": "receiver",
-          "name": {
-              "en": "Yamaha receiver",
-              "nl": "Yamaha receiver"
-          },
-          "images": {
-              "large": "drivers/receiver/assets/images/large.jpg",
-              "small": "drivers/receiver/assets/images/small.jpg"
-          },
-          "class": "other",
-          "capabilities": [ "onoff", "volume_mute", "source_selected", "volume_set", "soundprogram_selected"],
-		  "mobile": {
-				"components": [
-					{
-						"id": "icon",
-						"capabilities": [ "onoff" ],
-						"options": {
-							"icons": {
-								"onoff": "./assets/icon.svg"
-							}
-						}
-					},
-					{
-						"id": "slider",
-						"capabilities": [ "volume_set" ],
-						"options": {
-							"showTitle": true
-						}
-					},
-					{
-						"id": "picker",
-						"capabilities": [ "source_selected" ]
-					}
-				]
-			},
-          "pair": [
+        "id": "receiver",
+        "name": {
+          "en": "Yamaha Receiver",
+          "nl": "Yamaha Receiver"
+        },
+        "images": {
+          "large": "drivers/receiver/assets/images/large.jpg",
+          "small": "drivers/receiver/assets/images/small.jpg"
+        },
+        "class": "other",
+        "capabilities": [ "onoff", "volume_mute", "source_selected", "volume_set", "soundprogram_selected"],
+        "mobile": {
+          "components": [
             {
-              "id": "start"
-            },
-            {
-              "id": "list_devices",
-              "template": "list_devices",
-              "navigation": {
-                  "next": "add_receiver"
+              "id": "icon",
+              "capabilities": [ "onoff" ],
+              "options": {
+                "icons": {
+                  "onoff": "./assets/icon.svg"
+                }
               }
             },
             {
-              "id": "add_receiver",
-              "template": "add_devices"
+              "id": "slider",
+              "capabilities": [ "volume_set" ],
+              "options": {
+                "showTitle": true
+              }
+            },
+            {
+              "id": "picker",
+              "capabilities": [ "source_selected" ]
             }
-          ],
-		  "settings":[
-			{
-				"type": "group",
-                    "label": {
-                        "en": "General settings"
-                    },
-					"children":[
-						{
-                            "id": "ipaddress",
-                            "type": "text",
-                            "label": {
-                                "en": "IP address"
-                            },
-                            "value": "0.0.0.0",
-                            "hint": {
-                                "en": "Enter the IP address of your Yamaha receiver here.",
-                                "nl": "Vul het IP adres van uw Yamaha receiver hier in."
-                            }
-                        },
-						{
-                            "id": "zone",
-                            "type": "text",
-                            "label": {
-                                "en": "Zone"
-                            },
-                            "value": "Main_Zone",
-                            "hint": {
-                                "en": "Enter the Zone of your Yamaha receiver here. If you are unsure what to enter, fill in 'Main_Zone'.",
-                                "nl": "Vul de Zone van uw Yamaha receiver hier in. Als je niet zeker weet wat u in moet voeren, vul dan 'Main_Zone' in."
-                            }
-                        }
-					]
-			}
-		  ]
+          ]
+        },
+        "pair": [
+          {
+            "id": "start"
+          },
+          {
+            "id": "list_devices",
+            "template": "list_devices",
+            "navigation": {
+              "next": "add_receiver"
+            }
+          },
+          {
+            "id": "add_receiver",
+            "template": "add_devices"
+          }
+        ],
+        "settings":[
+          {
+            "type": "group",
+            "label": {
+              "en": "General settings"
+            },
+            "children":[
+              {
+                "id": "ipaddress",
+                "type": "text",
+                "label": {
+                  "en": "IP address"
+                },
+                "value": "0.0.0.0",
+                "hint": {
+                  "en": "Enter the IP address of your Yamaha receiver here.",
+                  "nl": "Vul het IP adres van uw Yamaha receiver hier in."
+                }
+              },
+              {
+                "id": "zone",
+                "type": "text",
+                "label": {
+                  "en": "Zone"
+                },
+                "value": "Main_Zone",
+                "hint": {
+                  "en": "Enter the Zone of your Yamaha receiver here. If you are unsure what to enter, fill in 'Main_Zone'.",
+                  "nl": "Vul de Zone van uw Yamaha receiver hier in. Als je niet zeker weet wat u in moet voeren, vul dan 'Main_Zone' in."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "musiccast",
+        "name": {
+          "en": "Yamaha MusicCast",
+          "nl": "Yamaha MusicCast"
+        },
+        "images": {
+          "large": "drivers/musiccast/assets/images/large.jpg",
+          "small": "drivers/musiccast/assets/images/small.jpg"
+        },
+        "class": "other",
+        "capabilities": [ "onoff", "volume_mute", "source_selected", "volume_set", "soundprogram_selected"],
+        "mobile": {
+          "components": [
+            {
+              "id": "icon",
+              "capabilities": [ "onoff" ],
+              "options": {
+                "icons": {
+                  "onoff": "./assets/icon.svg"
+                }
+              }
+            },
+            {
+              "id": "slider",
+              "capabilities": [ "volume_set" ],
+              "options": {
+                "showTitle": true
+              }
+            },
+            {
+              "id": "picker",
+              "capabilities": [ "source_selected" ]
+            }
+          ]
+        },
+        "pair": [
+          {
+            "id": "start"
+          },
+          {
+            "id": "list_devices",
+            "template": "list_devices",
+            "navigation": {
+              "next": "add_receiver"
+            }
+          },
+          {
+            "id": "add_receiver",
+            "template": "add_devices"
+          }
+        ],
+        "settings":[
+          {
+            "type": "group",
+            "label": {
+              "en": "General settings"
+            },
+            "children":[
+              {
+                "id": "ipaddress",
+                "type": "text",
+                "label": {
+                  "en": "IP address"
+                },
+                "value": "0.0.0.0",
+                "hint": {
+                  "en": "Enter the IP address of your Yamaha MusicCast receiver here.",
+                  "nl": "Vul het IP adres van uw Yamaha MusicCast receiver hier in."
+                }
+              }
+            ]
+          }
+        ]
       }
     ],
     "flow": {
@@ -307,7 +382,7 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-	            "filter": "driver_id=receiver"
+	            "filter": "driver_uri=homey:app:martens.yamaha"
               }
             ]
         },
@@ -325,7 +400,7 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-	            "filter": "driver_id=receiver"
+	            "filter": "driver_uri=homey:app:martens.yamaha"
               }
             ]
         },{
@@ -342,7 +417,7 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-	            "filter": "driver_id=receiver"
+	            "filter": "driver_uri=homey:app:martens.yamaha"
               }
             ]
         },{
@@ -359,7 +434,7 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-	            "filter": "driver_id=receiver"
+	            "filter": "driver_uri=homey:app:martens.yamaha"
               }
             ]
         },
@@ -377,17 +452,15 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-                "filter": "driver_id=receiver"
+                "filter": "driver_uri=homey:app:martens.yamaha"
               },
               {
                 "name": "volume",
-                "type": "number",
+                "type": "range",
                 "min": 0,
                 "max": 100,
-                "placeholder": {
-                   "en": "Target volume in %",
-                   "nl": "Gewenst volume in %"
-                }
+                "step": 1,
+                "label": "%"
               }
             ]
         },
@@ -405,17 +478,15 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-                "filter": "driver_id=receiver"
+                "filter": "driver_uri=homey:app:martens.yamaha"
               },
               {
                 "name": "volume",
-                "type": "number",
+                "type": "range",
                 "min": 0,
                 "max": 100,
-                "placeholder": {
-                   "en": "Volume change in dB",
-                   "nl": "Volumeverandering in dB"
-                }
+                "step": 1,
+                "label": "dB"
               }
             ]
         },
@@ -433,17 +504,15 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-                "filter": "driver_id=receiver"
+                "filter": "driver_uri=homey:app:martens.yamaha"
               },
               {
                 "name": "volume",
-                "type": "number",
+                "type": "range",
                 "min": 0,
                 "max": 100,
-                "placeholder": {
-                   "en": "Volume change in dB",
-                   "nl": "Volumeverandering in dB"
-                }
+                "step": 1,
+                "label": "dB"
               }
             ]
         },
@@ -461,7 +530,7 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-	            "filter": "driver_id=receiver"
+	            "filter": "driver_uri=homey:app:martens.yamaha"
               },
 			  {
 				"name": "input",
@@ -487,7 +556,7 @@
                   "en": "Select receiver",
                   "nl": "Selecteer receiver"
                 },
-	            "filter": "driver_id=receiver"
+	            "filter": "driver_uri=homey:app:martens.yamaha"
               },
 			  {
 				"name": "input",
