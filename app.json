@@ -4,12 +4,20 @@
         "en": "Yamaha receiver",
         "nl": "Yamaha receiver"
     },
-    "version": "0.2.5",
+    "version": "0.3.0",
     "compatibility": "0.x || 1.x",
     "author": {
         "name": "Koen Martens",
         "email": "koen-martens@hotmail.com"
     },
+	"contributors": {
+        "developers": [
+            {
+				"name": "Frank Herrmann",
+                "email": "frank@codeking.de"
+            }
+        ]
+	},
     "images": {
       "large": "./assets/images/large.jpg",
       "small": "./assets/images/small.jpg"

@@ -18,6 +18,11 @@ Version 0.2.5
 
 Fixed not auto-reconnecting on Homey restart
 
+Version 0.3.0
+
+Adding support of MusicCast devices and partial re-write of the app following from this.
+Huge thanks to Frank for the integration!
+
 Version 0.2.1 - Version 0.2.4
 
 Bugfixes
