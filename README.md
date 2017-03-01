@@ -14,14 +14,14 @@ Are always appreciated :)
 [![](https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CWQL5MRKGHH5U)
 
 #Changelog
-Version 0.2.5
-
-Fixed not auto-reconnecting on Homey restart
-
 Version 0.3.0
 
 Adding support of MusicCast devices and partial re-write of the app following from this.
 Huge thanks to Frank for the integration!
+
+Version 0.2.5
+
+Fixed not auto-reconnecting on Homey restart
 
 Version 0.2.1 - Version 0.2.4
 
