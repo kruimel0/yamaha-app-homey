@@ -376,261 +376,465 @@
     ],
     "flow": {
 	    "actions": [
-        {
-            "id": "powerOn",
-            "title": {
-                "en": "Turn power on",
-                "nl": "Aanzetten"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
+            {
+                "id": "powerOn",
+                "title": {
+                    "en": "Turn power on",
+                    "nl": "Aanzetten"
                 },
-	            "filter": "driver_uri=homey:app:martens.yamaha"
-              }
-            ]
-        },
-        {
-            "id": "powerOff",
-            "title": {
-                "en": "Power off/standby",
-                "nl": "Uitschakelen/standby"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-	            "filter": "driver_uri=homey:app:martens.yamaha"
-              }
-            ]
-        },{
-            "id": "mute",
-            "title": {
-                "en": "Mute",
-                "nl": "Mute"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-	            "filter": "driver_uri=homey:app:martens.yamaha"
-              }
-            ]
-        },{
-            "id": "unMute",
-            "title": {
-                "en": "Mute Off",
-                "nl": "Mute Uit"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-	            "filter": "driver_uri=homey:app:martens.yamaha"
-              }
-            ]
-        },
-        {
-            "id": "setVolume",
-            "title": {
-                "en": "Change volume",
-                "nl": "Verander volume"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-                "filter": "driver_uri=homey:app:martens.yamaha"
-              },
-              {
-                "name": "volume",
-                "type": "range",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "label": "%"
-              }
-            ]
-        },
-        {
-            "id": "volumeUp",
-            "title": {
-                "en": "Raise volume",
-                "nl": "Zet geluid harder"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-                "filter": "driver_uri=homey:app:martens.yamaha"
-              },
-              {
-                "name": "volume",
-                "type": "range",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "label": "dB"
-              }
-            ]
-        },
-        {
-            "id": "volumeDown",
-            "title": {
-                "en": "Lower volume",
-                "nl": "Zet geluid zachter"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-                "filter": "driver_uri=homey:app:martens.yamaha"
-              },
-              {
-                "name": "volume",
-                "type": "range",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "label": "dB"
-              }
-            ]
-        },
-		{
-            "id": "changeSource",
-            "title": {
-                "en": "Change source",
-                "nl": "Bron selecteren"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-	            "filter": "driver_uri=homey:app:martens.yamaha"
-              },
-			  {
-				"name": "input",
-				"type": "autocomplete",
-				"placeholder": {
-				  "en": "input",
-				  "nl": "input"
-				}
-			  }
-            ]
-        },
-		{
-            "id": "changeSurround",
-            "title": {
-                "en": "Change surround options",
-                "nl": "Surround opties aanpassen"
-            },
-            "args": [
-              {
-                "name": "device",
-                "type": "device",
-                "placeholder": {
-                  "en": "Select receiver",
-                  "nl": "Selecteer receiver"
-                },
-	            "filter": "driver_uri=homey:app:martens.yamaha"
-              },
-			  {
-				"name": "input",
-				"type": "autocomplete",
-				"placeholder": {
-				  "en": "input",
-				  "nl": "input"
-				}
-			  }
-            ]
-        },
-        {
-            "id": "ListControl_DirectSel",
-            "title": {
-                "en": "Select line x",
-                "nl": "Selecteer regel x"
-            },
-            "hint": {
-                "en": "Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB).",
-                "nl": "Selecteer een specifieke regel binnen een menu (alleen voor menu gebaseerde inputs zoals Net Radio, Server, USB)."
-            },
-            "args": [
-                {
-                    "name": "device",
-                    "type": "device",
-                    "placeholder": {
-                        "en": "Select receiver",
-                        "nl": "Selecteer receiver"
-                    },
-                    "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
-                },
-                {
-                    "name": "input",
-                    "type": "dropdown",
-                    "values": [
-                        {
-                            "id": "NET_RADIO",
-                            "label": {
-                                "en": "NET RADIO"
-                            }
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
                         },
-                        {
-                            "id": "USB",
-                            "label": {
-                                "en": "USB"
-                            }
-                        },
-                        {
-                            "id": "SERVER",
-                            "label": {
-                                "en": "SERVER"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "line",
-                    "type": "number",
-                    "min": 1,
-                    "placeholder": {
-                        "en": "Line number",
-                        "nl": "Regel nummer"
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
                     }
-                }
-            ]
-        }
-      ]
+                ]
+            },
+            {
+                "id": "powerOff",
+                "title": {
+                    "en": "Power off/standby",
+                    "nl": "Uitschakelen/standby"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    }
+                ]
+            },
+            {
+                "id": "mute",
+                "title": {
+                    "en": "Mute",
+                    "nl": "Mute"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    }
+                ]
+            },
+            {
+                "id": "unMute",
+                "title": {
+                    "en": "Mute Off",
+                    "nl": "Mute Uit"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    }
+                ]
+            },
+            {
+                "id": "setVolume",
+                "title": {
+                    "en": "Change volume",
+                    "nl": "Verander volume"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "range",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "label": "%"
+                    }
+                ]
+            },
+            {
+                "id": "volumeUp",
+                "title": {
+                    "en": "Raise volume",
+                    "nl": "Zet geluid harder"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "range",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "label": "dB"
+                    }
+                ]
+            },
+            {
+                "id": "volumeDown",
+                "title": {
+                    "en": "Lower volume",
+                    "nl": "Zet geluid zachter"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "range",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "label": "dB"
+                    }
+                ]
+            },
+            {
+                "id": "changeSource",
+                "title": {
+                    "en": "Change source",
+                    "nl": "Bron selecteren"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    },
+                    {
+                        "name": "input",
+                        "type": "autocomplete",
+                        "placeholder": {
+                            "en": "input",
+                            "nl": "input"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "changeSurround",
+                "title": {
+                    "en": "Change surround options",
+                    "nl": "Surround opties aanpassen"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=musiccast"
+                    },
+                    {
+                        "name": "input",
+                        "type": "autocomplete",
+                        "placeholder": {
+                            "en": "input",
+                            "nl": "input"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "powerOn",
+                "title": {
+                    "en": "Turn power on",
+                    "nl": "Aanzetten"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    }
+                ]
+            },
+            {
+                "id": "powerOff",
+                "title": {
+                    "en": "Power off/standby",
+                    "nl": "Uitschakelen/standby"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    }
+                ]
+            },
+            {
+                "id": "mute",
+                "title": {
+                    "en": "Mute",
+                    "nl": "Mute"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    }
+                ]
+            },
+            {
+                "id": "unMute",
+                "title": {
+                    "en": "Mute Off",
+                    "nl": "Mute Uit"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    }
+                ]
+            },
+            {
+                "id": "setVolume",
+                "title": {
+                    "en": "Change volume",
+                    "nl": "Verander volume"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "range",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "label": "%"
+                    }
+                ]
+            },
+            {
+                "id": "volumeUp",
+                "title": {
+                    "en": "Raise volume",
+                    "nl": "Zet geluid harder"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "range",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "label": "dB"
+                    }
+                ]
+            },
+            {
+                "id": "volumeDown",
+                "title": {
+                    "en": "Lower volume",
+                    "nl": "Zet geluid zachter"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "range",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "label": "dB"
+                    }
+                ]
+            },
+            {
+                "id": "changeSource",
+                "title": {
+                    "en": "Change source",
+                    "nl": "Bron selecteren"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    },
+                    {
+                        "name": "input",
+                        "type": "autocomplete",
+                        "placeholder": {
+                            "en": "input",
+                            "nl": "input"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "changeSurround",
+                "title": {
+                    "en": "Change surround options",
+                    "nl": "Surround opties aanpassen"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    },
+                    {
+                        "name": "input",
+                        "type": "autocomplete",
+                        "placeholder": {
+                            "en": "input",
+                            "nl": "input"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "ListControl_DirectSel",
+                "title": {
+                    "en": "Select line x",
+                    "nl": "Selecteer regel x"
+                },
+                "hint": {
+                    "en": "Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB).",
+                    "nl": "Selecteer een specifieke regel binnen een menu (alleen voor menu gebaseerde inputs zoals Net Radio, Server, USB)."
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "device",
+                        "placeholder": {
+                            "en": "Select receiver",
+                            "nl": "Selecteer receiver"
+                        },
+                        "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                    },
+                    {
+                        "name": "input",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "NET_RADIO",
+                                "label": {
+                                    "en": "NET RADIO"
+                                }
+                            },
+                            {
+                                "id": "USB",
+                                "label": {
+                                    "en": "USB"
+                                }
+                            },
+                            {
+                                "id": "SERVER",
+                                "label": {
+                                    "en": "SERVER"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "line",
+                        "type": "number",
+                        "min": 1,
+                        "placeholder": {
+                            "en": "Line number",
+                            "nl": "Regel nummer"
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }

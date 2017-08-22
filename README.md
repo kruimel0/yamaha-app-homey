@@ -16,7 +16,8 @@ Are always appreciated :)
 # Changelog
 
 ##### Version 0.3.1
-- Adding Flow Action: Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB). 
+- Adding Flow Action: Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB).
+- Fixed incorrect behavior on the Flows page (actions where listed below Apps instead of Devices).
 
 ##### Version 0.3.0
 - Adding support of MusicCast devices and partial re-write of the app following from this.
