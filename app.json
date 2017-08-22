@@ -4,7 +4,7 @@
         "en": "Yamaha receiver",
         "nl": "Yamaha receiver"
     },
-    "version": "0.3.0",
+    "version": "0.3.1",
     "compatibility": "0.x || 1.x",
     "author": {
         "name": "Koen Martens",
@@ -574,6 +574,61 @@
 				  "nl": "input"
 				}
 			  }
+            ]
+        },
+        {
+            "id": "ListControl_DirectSel",
+            "title": {
+                "en": "Select line x",
+                "nl": "Selecteer regel x"
+            },
+            "hint": {
+                "en": "Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB).",
+                "nl": "Selecteer een specifieke regel binnen een menu (alleen voor menu gebaseerde inputs zoals Net Radio, Server, USB)."
+            },
+            "args": [
+                {
+                    "name": "device",
+                    "type": "device",
+                    "placeholder": {
+                        "en": "Select receiver",
+                        "nl": "Selecteer receiver"
+                    },
+                    "filter": "driver_uri=homey:app:martens.yamaha&driver_id=receiver"
+                },
+                {
+                    "name": "input",
+                    "type": "dropdown",
+                    "values": [
+                        {
+                            "id": "NET_RADIO",
+                            "label": {
+                                "en": "NET RADIO"
+                            }
+                        },
+                        {
+                            "id": "USB",
+                            "label": {
+                                "en": "USB"
+                            }
+                        },
+                        {
+                            "id": "SERVER",
+                            "label": {
+                                "en": "SERVER"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "line",
+                    "type": "number",
+                    "min": 1,
+                    "placeholder": {
+                        "en": "Line number",
+                        "nl": "Regel nummer"
+                    }
+                }
             ]
         }
       ]
