@@ -353,6 +353,12 @@ module.exports.volumeDown = function (callback, args){
 	callback(null, true);
 };
 
+// Driver specific flows.
+Homey.manager('flow').on('action.ListControl_DirectSel', function (callback, args) {
+	SendXMLToReceiver(args.device.ipaddress, '<YAMAHA_AV cmd="PUT"><' + args.input + '><List_Control><Direct_Sel>Line_' + args.line + '</Direct_Sel></List_Control></NET_RADIO></YAMAHA_AV>');
+	callback(null, true);
+});
+
 //Set and get XML information
 function SendXMLToReceiver (ipaddress,xml){
 	try{
