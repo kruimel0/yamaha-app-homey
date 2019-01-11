@@ -15,7 +15,10 @@ Are always appreciated :)
 
 # Changelog
 
-##### Version 0.3.1 (beta)
+##### Version 0.3.2
+- Homey 2.0 compatibility
+
+##### Version 0.3.1
 - Adding Flow Action: Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB).
 - Fixed incorrect behavior on the Flows page (actions where listed below Apps instead of Devices).
 - Note: Re-adding of the receiver is necessary! Sorry for this.
