@@ -14,6 +14,8 @@ Are always appreciated :)
 [![](https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CWQL5MRKGHH5U)
 
 # Changelog
+##### Version 0.3.3 (beta)
+Homey 2.0 compatibility
 
 ##### Version 0.3.1 (beta)
 - Adding Flow Action: Select a specific line within a menu (only for menu based inputs like Net Radio, Server, USB).
