@@ -134,6 +134,18 @@
 			},
 			{	"id": "AirPlay",
 				"title": { "en": "AirPlay"
+			},
+			{	"id": "OPTICAL",
+				"title": { "en": "OPTICAL"
+			}
+			},
+			{	"id": "OPTICAL1",
+				"title": { "en": "OPTICAL1"
+			}
+			},
+			{	"id": "OPTICAL2",
+				"title": { "en": "OPTICAL2"
+			}
 			}
 			}
 			]
