@@ -200,6 +200,15 @@ function initAutocompletes() {
         },
         {	key: 'mc_link',
             name: 'MusicCast Link'
+        },
+        {	key: 'optical',
+            name: 'OPTICAL'
+        },
+        {	key: 'optical1',
+            name: 'OPTICAL1'
+        },
+        {	key: 'optical2',
+            name: 'OPTICAL2'
         }
     ];
     var allPossibleInputsSurround = [
